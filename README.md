@@ -47,9 +47,7 @@ import 'package:dg_direct_link/dg_direct_link.dart';
 ## Example Widget
 
 ```dart
-class MyWidget extends StatelessWidget {
-  Widget build(BuildContext context) {
-    return DGDirectLinkWidget(
+ DGDirectLinkWidget(
        url: 'Paste your link',
        
        loading: (){
@@ -60,12 +58,10 @@ class MyWidget extends StatelessWidget {
         return //Use your error widget,
        } 
        
-       complete: (){
+       complete: (links){
         return //User your complete widget,
        } 
     );
-  }
-}
 ```
 ## Example
 
@@ -76,6 +72,9 @@ DGDirectLink.get('Paste your link').then((links){
 
     });
 ```
+Created by Min Thant Htet
+
+Power By Aung Si Min
 
 
 

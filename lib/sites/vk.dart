@@ -6,7 +6,7 @@ import '../tools/tools.dart';
 class VK {
 static Future<List<DGDirectLinkModel>> get(String url,bool debugMode) async {
    final List<DGDirectLinkModel> links = [];
-    await Tools.requestSite(url).then((value){
+    await Tools.requestSite(url,header: {"User-agent": Tools.windowAgent}).then((value){
           try {
         String? sc1 = RegExp("al_video.php', ?(\\{.*])", multiLine: true)
             .firstMatch(value!.body!.text.toString())!

@@ -25,7 +25,7 @@ class GoogleDrive {
     HeadlessInAppWebView(
       initialOptions: InAppWebViewGroupOptions(
           crossPlatform: InAppWebViewOptions(
-              cacheEnabled: true,
+             // cacheEnabled: true,
               useOnLoadResource: true,
               javaScriptCanOpenWindowsAutomatically: true,
               mediaPlaybackRequiresUserGesture: false,

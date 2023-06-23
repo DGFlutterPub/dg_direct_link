@@ -8,6 +8,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:html/parser.dart';
 
 import '../models/dg_direct_link_model.dart';
+import '../tools/tools.dart';
 
 class SocialDownloader {
  
@@ -16,28 +17,37 @@ class SocialDownloader {
    final List<DGDirectLinkModel> links = [];
     final Completer<List<DGDirectLinkModel>> c = Completer<List<DGDirectLinkModel>>();
     HeadlessInAppWebView(
+      initialOptions: InAppWebViewGroupOptions(
+          crossPlatform: InAppWebViewOptions(
+             // userAgent: Tools.windowAgent,
+             // cacheEnabled: true,
+              useOnLoadResource: true,
+              javaScriptCanOpenWindowsAutomatically: true,
+              mediaPlaybackRequiresUserGesture: false,
+             // useOnDownloadStart: true
+             )),
       initialUrlRequest: URLRequest(
           url: Uri.parse('https://en.savefrom.net')),
-      onLoadStop: (controller, url) async {
+      onLoadStop: (controller, gurl) async {
         await controller.evaluateJavascript(source: '''
 document.querySelector('#sf_url').value = '$url'
 document.querySelector('#sf_submit').click()
 ''');
         var data = await Future.delayed(const Duration(seconds: 3), () async {
           var htm = await controller.getHtml();
-          var document = parse(htm);
+          var doc = parse(htm);
+         dom.Document document = dom.Document.html(htm!);
 
           try {
-            String? thumbnail = document
+            /*String? thumbnail = document
                 .querySelector(".media-result .clip img")
                 ?.attributes['src'];
-
-            var info = document.querySelector(".info-box");
+                print(thumbnail);*/
+             var info = document.querySelector(".info-box");
             List<dom.Element> linkGroup = [
               ...info!.querySelectorAll(".link-group a")
             ];
-
-            linkGroup.map((element) {
+          linkGroup.map((element) {
               String? href = element.attributes['href'];
               String? text = element.text;
             print(href.toString());
@@ -47,7 +57,7 @@ document.querySelector('#sf_submit').click()
               c.complete(links);
             }).toList();
           } catch (e) {
-            
+            print('Error social:'+e.toString());
           }
        
         });

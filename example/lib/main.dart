@@ -39,7 +39,7 @@ TextEditingController controller = TextEditingController();
  String support = "\n- VK"+
 "\n- SolidFiles"+
 "\n- MediaFire"+
-"\n FEmbed"+
+"\n- FEmbed"+
 "\n- GoogleDrive"+
 "\n- Ok.ru"+
 "\n- Dropbox"+
