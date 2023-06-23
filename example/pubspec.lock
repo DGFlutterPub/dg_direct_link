@@ -61,10 +61,10 @@ packages:
     dependency: "direct main"
     description:
       name: dg_direct_link
-      sha256: "35379c01cdd00ff788bfba1d949dc1179d5fed52d97fdb5061afeaee5327f13e"
+      sha256: "382b4c634399c23234e41f774eaf0fcfe86086434e91f9c46c965e787d780726"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.5"
+    version: "1.0.25"
   fake_async:
     dependency: transitive
     description:
@@ -78,6 +78,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_inappwebview:
+    dependency: transitive
+    description:
+      name: flutter_inappwebview
+      sha256: f73505c792cf083d5566e1a94002311be497d984b5607f25be36d685cf6361cf
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.7.2+3"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -99,6 +107,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.15.4"
+  html_unescape:
+    dependency: transitive
+    description:
+      name: html_unescape
+      sha256: "15362d7a18f19d7b742ef8dcb811f5fd2a2df98db9f80ea393c075189e0b61e3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   http:
     dependency: transitive
     description:
@@ -234,4 +250,4 @@ packages:
     version: "2.1.4"
 sdks:
   dart: ">=3.0.5 <4.0.0"
-  flutter: ">=1.17.0"
+  flutter: ">=3.0.0"
