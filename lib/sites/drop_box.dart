@@ -1,6 +1,8 @@
+import 'package:dg_direct_link/dg_direct_link.dart';
+
 import '../models/dg_direct_link_model.dart';
 
-class DropBox {
+class DropBox{
  
   static Future<List<DGDirectLinkModel>> get(String url) async {
     final List<DGDirectLinkModel> links = [];

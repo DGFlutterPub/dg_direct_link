@@ -1,3 +1,6 @@
+## 1.0.25
+- Fixed any bugs
+
 ## 1.0.3
 - VK
 - SolidFiles

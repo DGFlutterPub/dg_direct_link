@@ -70,11 +70,14 @@ class MyWidget extends StatelessWidget {
 ## Example
 
 ```dart
-DGDirectLink.start('Paste your link').then((links){
+DGDirectLink.get('Paste your link').then((links){
   
     }).onError((error, stackTrace) {
 
     });
 ```
+
+
+
 
 

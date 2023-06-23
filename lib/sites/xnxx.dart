@@ -1,13 +1,19 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:html/parser.dart';
 
+import '../dg_direct_link.dart';
 import '../models/dg_direct_link_model.dart';
 
 class XNXX {
   
   static Future<List<DGDirectLinkModel>> get(String url,bool debugMode) async {
  final List<DGDirectLinkModel> links = [];
- var han = HeadlessInAppWebView(
+ final Completer<List<DGDirectLinkModel>> c = Completer<List<DGDirectLinkModel>>();
+
+ HeadlessInAppWebView(
       initialOptions: InAppWebViewGroupOptions(
           crossPlatform: InAppWebViewOptions(
               allowFileAccessFromFileURLs: false,
@@ -34,7 +40,8 @@ class XNXX {
                     .replaceAll("');", "");
 
                 print(lowQ);
-                links.add(DGDirectLinkModel(quality: 'SD', link: lowQ));
+               links.add(DGDirectLinkModel(quality: 'SD', link: lowQ));
+              
               }
             }));
           }
@@ -45,16 +52,21 @@ class XNXX {
                 String highQ = line
                     .replaceAll("html5player.setVideoUrlHigh('", "")
                     .replaceAll("');", "");
-                links.add(DGDirectLinkModel(quality: 'HD', link: highQ));
+            links.add(DGDirectLinkModel(quality: 'HD', link: highQ));
+             c.complete(links);
               }
             }));
           }
-        } catch (e) {}
+                
+         
+        } catch (e) {
+        
+        }
 
       },
     )
       ..run()
       ..dispose();
-    return links;
+     return c.future;
   }
  }
